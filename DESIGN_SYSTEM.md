@@ -2,26 +2,29 @@
 
 ## Direction
 
-Confident modern B2B export brand. Dark cinematic hero, glass chrome, teal signal, Syne display.  
+Confident modern B2B export brand. Obsidian + champagne gold, glass chrome.  
 **Custom Motion + CSS effects only — no shadcn primitives.**  
 Not purple glow kits. Not cream serif. Not vintage ledger.
+
+## Type (enterprise)
+
+| Role | Family | Use |
+|------|--------|-----|
+| Display | **Outfit** | Headlines, brand lockups (`.font-display`) |
+| UI / body | **IBM Plex Sans** | Nav, copy, forms, admin |
+| Specs | **IBM Plex Mono** | HS codes, Incoterms, clocks, references |
+
+Loaded via `next/font/google` with `display: swap`.
 
 ## Palette
 
 | Token | Hex | Use |
 |-------|-----|-----|
-| Ink deep | `#06090D` | hero / footer / glass nav |
-| Ink | `#0A0F14` | body text |
-| Canvas | `#F4F6F8` | page wash |
-| Paper | `#FFFFFF` | elevated panels |
-| Accent | `#0D9488` | CTAs / links |
-| Signal | `#5EEAD4` / `#2DD4BF` | hero CTA / shine |
-
-## Type
-
-- Display: `Syne` (`.font-display`)
-- UI body: `DM Sans`
-- Specs: `IBM Plex Mono`
+| Obsidian | `#05080C` | hero / footer / nav glass |
+| Champagne | `#E8D5A8` / `#F3E6C4` | nav signal / accents |
+| Bullion | `#C9A56A` | CTAs |
+| Canvas | `#F8F6F1` | page wash |
+| Paper | `#FFFFFF` | panels |
 
 ## Effects (custom)
 
@@ -29,12 +32,6 @@ Not purple glow kits. Not cream serif. Not vintage ledger.
 - Magnetic CTA (`MagneticLink`)
 - Cursor spotlight cards (`SpotlightCard`)
 - Client marquee
-- Aurora orbs + grid mask hero
-- Glass fixed nav (hide on scroll down)
+- Glass fixed nav
 - Button shine sweep
 - Border beam on brand mark
-- Soft elevated hover lift
-
-## Shape
-
-Pill CTAs (`rounded-full`), soft panels (`rounded-2xl`). Depth via shadow tokens + glass blur.

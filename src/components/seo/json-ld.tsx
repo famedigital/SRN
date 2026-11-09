@@ -13,14 +13,14 @@ export function CorporationJsonLd() {
       "SRN PRINTOTRADING PRIVATE LIMITED is a premier Indian merchant export and procurement house, supplying agricultural commodities, certified spices, packaged foods, fine attars, garments, and artisan crafts under Incoterms 2020 with SGS/Intertek laboratory verification.",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "New Delhi",
-      addressRegion: "Delhi",
+      addressLocality: "Kolkata",
+      addressRegion: "West Bengal",
       addressCountry: "IN",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "28.6139",
-      longitude: "77.2090",
+      latitude: "22.5726",
+      longitude: "88.3639",
     },
     contactPoint: [
       {

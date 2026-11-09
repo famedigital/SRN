@@ -11,9 +11,10 @@ import {
   productCategories,
 } from "../../../content/copy";
 import { useRfq } from "@/components/rfq/rfq-store";
+import { cn } from "@/lib/utils";
 
 const inputClass =
-  "w-full rounded-md border border-[var(--srn-line-strong)] bg-white px-3.5 py-2.5 text-sm text-[var(--srn-ink)] outline-none placeholder:text-[var(--srn-ink-muted)] focus:border-[var(--srn-accent)]";
+  "w-full rounded-xl border border-[var(--srn-line-strong)] bg-[var(--srn-canvas)] px-3.5 py-3 text-sm text-[var(--srn-ink)] outline-none transition placeholder:text-[var(--srn-ink-muted)] focus:border-[var(--srn-accent)] focus:bg-white focus:ring-4 focus:ring-[var(--srn-accent)]/15";
 
 export function EnquiryForm() {
   const search = useSearchParams();
@@ -88,21 +89,23 @@ export function EnquiryForm() {
   if (reference) {
     return (
       <div
-        className="rounded-xl border border-[var(--srn-accent)] bg-[var(--srn-accent-soft)] p-8"
+        className="rounded-2xl border border-[var(--srn-accent)]/40 bg-[var(--srn-accent-soft)] p-8"
         role="status"
         aria-live="polite"
       >
-        <p className="text-xs font-medium uppercase tracking-wider text-[var(--srn-accent)]">
+        <p className="font-mono text-xs uppercase tracking-wider text-[var(--srn-accent-deep)]">
           Confirmed
         </p>
-        <p className="mt-3 text-3xl font-semibold tracking-tight text-[var(--srn-ink)]">Thank you</p>
+        <p className="font-display mt-3 text-3xl tracking-tight text-[var(--srn-ink)]">
+          Thank you
+        </p>
         <p className="mt-4 text-[var(--srn-ink-muted)]">{contact.success}</p>
         <p className="mt-6 font-mono text-sm">
           Reference · <strong>{reference}</strong>
         </p>
         <button
           type="button"
-          className="mt-8 text-sm font-medium text-[var(--srn-accent)]"
+          className="mt-8 text-sm font-semibold text-[var(--srn-accent-deep)]"
           onClick={() => setReference(null)}
         >
           Send another enquiry
@@ -112,19 +115,16 @@ export function EnquiryForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="space-y-6 rounded-xl border border-[var(--srn-line)] bg-[var(--srn-paper)] p-6 md:p-8"
-    >
+    <form onSubmit={onSubmit} className="space-y-8">
       {!!lines.length && (
-        <div className="rounded-lg border border-[var(--srn-line)] bg-[var(--srn-canvas-muted)] p-4 text-sm">
-          <p className="text-xs font-medium uppercase tracking-wider text-[var(--srn-accent)]">
+        <div className="rounded-2xl border border-[var(--srn-accent)]/30 bg-[var(--srn-accent-soft)] p-4 text-sm">
+          <p className="font-mono text-[11px] uppercase tracking-wider text-[var(--srn-accent-deep)]">
             From RFQ matrix
           </p>
           <ul className="mt-2 space-y-1 text-[var(--srn-ink-muted)]">
             {lines.map((l, i) => (
               <li key={l.slug}>
-                <span className="font-mono text-[10px] text-[var(--srn-ink)]/30">
+                <span className="font-mono text-[10px] text-[var(--srn-accent-deep)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>{" "}
                 {l.name}
@@ -134,123 +134,145 @@ export function EnquiryForm() {
         </div>
       )}
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Field label="Full name *" name="fullName" required />
-        <Field label="Company *" name="companyName" required />
-        <Field label="Business email *" name="businessEmail" type="email" required />
-        <Field label="Phone / WhatsApp" name="phoneWhatsApp" />
-        <Field label="Country *" name="country" required />
-        <label className="block text-sm">
-          <span className="mb-1.5 block text-xs font-medium text-[var(--srn-ink-muted)]">
-            Enquiry type *
-          </span>
-          <select
-            name="enquiryType"
-            required
-            defaultValue={enquiryTypeDefault}
-            className={inputClass}
-          >
-            {enquiryTypes.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-
-      <fieldset>
-        <legend className="text-xs font-medium text-[var(--srn-ink-muted)]">
-          Product categories *
-        </legend>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {productCategories.map((c) => {
-            const on = categories.includes(c.slug);
-            return (
-              <button
-                key={c.slug}
-                type="button"
-                onClick={() => toggleCategory(c.slug)}
-                className={`rounded-full border px-3 py-1.5 text-xs font-medium ${
-                  on
-                    ? "border-[var(--srn-accent)] bg-[var(--srn-accent)] text-white"
-                    : "border-[var(--srn-line-strong)] text-[var(--srn-ink-muted)] hover:border-[var(--srn-accent)]"
-                }`}
-                aria-pressed={on}
-              >
-                {c.name}
-              </button>
-            );
-          })}
+      <section>
+        <SectionLabel n="01" title="Buyer details" />
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <Field label="Full name *" name="fullName" required />
+          <Field label="Company *" name="companyName" required />
+          <Field label="Business email *" name="businessEmail" type="email" required />
+          <Field label="Phone / WhatsApp" name="phoneWhatsApp" />
+          <Field label="Country *" name="country" required />
+          <label className="block text-sm">
+            <span className="mb-1.5 block text-xs font-medium text-[var(--srn-ink-muted)]">
+              Enquiry type *
+            </span>
+            <select
+              name="enquiryType"
+              required
+              defaultValue={enquiryTypeDefault}
+              className={inputClass}
+            >
+              {enquiryTypes.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
-      </fieldset>
+      </section>
 
-      <label className="block text-sm">
-        <span className="mb-1.5 block text-xs font-medium text-[var(--srn-ink-muted)]">
-          Specifications / requirements *
-        </span>
-        <textarea
-          name="specifications"
-          required
-          rows={5}
-          className={inputClass}
-          placeholder="Grade, pack, volume, destination rules…"
-        />
-      </label>
+      <section>
+        <SectionLabel n="02" title="Product lines" />
+        <fieldset className="mt-4">
+          <legend className="sr-only">Product categories</legend>
+          <div className="flex flex-wrap gap-2">
+            {productCategories.map((c) => {
+              const on = categories.includes(c.slug);
+              return (
+                <button
+                  key={c.slug}
+                  type="button"
+                  onClick={() => toggleCategory(c.slug)}
+                  className={cn(
+                    "rounded-full border px-3.5 py-2 text-xs font-semibold transition",
+                    on
+                      ? "border-[var(--srn-accent)] bg-[linear-gradient(135deg,var(--srn-accent),var(--srn-champagne))] text-[#1a140c] shadow-[0_8px_20px_-12px_var(--srn-accent-glow)]"
+                      : "border-[var(--srn-line-strong)] text-[var(--srn-ink-muted)] hover:border-[var(--srn-accent)] hover:text-[var(--srn-accent-deep)]",
+                  )}
+                  aria-pressed={on}
+                >
+                  {c.name}
+                </button>
+              );
+            })}
+          </div>
+        </fieldset>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Field label="Estimated quantity" name="estimatedQuantity" />
-        <Field label="Required packaging" name="requiredPackaging" />
-        <label className="block text-sm">
+        <label className="mt-5 block text-sm">
           <span className="mb-1.5 block text-xs font-medium text-[var(--srn-ink-muted)]">
-            Incoterm
+            Specifications / requirements *
           </span>
-          <select name="incoterm" className={inputClass}>
-            <option value="">Select…</option>
-            {incoterms.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
+          <textarea
+            name="specifications"
+            required
+            rows={5}
+            className={inputClass}
+            placeholder="Grade, pack, volume, destination rules…"
+          />
         </label>
-        <label className="block text-sm">
-          <span className="mb-1.5 block text-xs font-medium text-[var(--srn-ink-muted)]">
-            Indian export gateway
-          </span>
-          <select name="originGateway" className={inputClass}>
-            <option value="">Select…</option>
-            {originGateways.map((g) => (
-              <option key={g} value={g}>
-                {g}
-              </option>
-            ))}
-          </select>
-        </label>
-        <Field label="Destination port / place" name="destinationPort" />
-        <Field label="Timeline" name="timeline" placeholder="e.g. Q2 2027" />
-      </div>
+      </section>
 
-      <label className="block text-sm">
-        <span className="mb-1.5 block text-xs font-medium text-[var(--srn-ink-muted)]">
-          Additional notes
-        </span>
-        <textarea name="additionalNotes" rows={3} className={inputClass} />
-      </label>
+      <section>
+        <SectionLabel n="03" title="Commercial path" />
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <Field label="Estimated quantity" name="estimatedQuantity" />
+          <Field label="Required packaging" name="requiredPackaging" />
+          <label className="block text-sm">
+            <span className="mb-1.5 block text-xs font-medium text-[var(--srn-ink-muted)]">
+              Incoterm
+            </span>
+            <select name="incoterm" className={inputClass}>
+              <option value="">Select…</option>
+              {incoterms.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="block text-sm">
+            <span className="mb-1.5 block text-xs font-medium text-[var(--srn-ink-muted)]">
+              Indian export gateway
+            </span>
+            <select name="originGateway" className={inputClass}>
+              <option value="">Select…</option>
+              {originGateways.map((g) => (
+                <option key={g} value={g}>
+                  {g}
+                </option>
+              ))}
+            </select>
+          </label>
+          <Field label="Destination port / place" name="destinationPort" />
+          <Field label="Timeline" name="timeline" placeholder="e.g. Q2 2027" />
+        </div>
+
+        <label className="mt-4 block text-sm">
+          <span className="mb-1.5 block text-xs font-medium text-[var(--srn-ink-muted)]">
+            Additional notes
+          </span>
+          <textarea name="additionalNotes" rows={3} className={inputClass} />
+        </label>
+      </section>
 
       <label className="flex items-start gap-3 text-sm text-[var(--srn-ink-muted)]">
-        <input type="checkbox" name="consentGiven" required className="mt-1 accent-[var(--srn-navy)]" />
+        <input
+          type="checkbox"
+          name="consentGiven"
+          required
+          className="mt-1 accent-[var(--srn-accent)]"
+        />
         <span>{contact.consent}</span>
       </label>
 
       <button
         type="submit"
         disabled={pending}
-        className="btn-shine inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#C5A059] via-[#E2C37B] to-[#C5A059] px-8 py-3.5 text-sm font-semibold text-stone-950 shadow-[0_12px_32px_-10px_rgba(197,160,89,0.5)] hover:shadow-[0_16px_40px_-8px_rgba(197,160,89,0.7)] hover:brightness-105 active:scale-[0.98] disabled:opacity-60 transition"
+        className="btn-shine inline-flex w-full items-center justify-center rounded-full bg-[linear-gradient(105deg,#8f6d35_0%,#e8d5a8_45%,#c9a56a_70%,#8f6d35_100%)] bg-[length:180%_100%] px-8 py-3.5 text-sm font-semibold text-[#1a140c] shadow-[0_14px_36px_-12px_rgba(201,165,106,0.55)] transition hover:brightness-105 active:scale-[0.99] disabled:opacity-60 md:w-auto"
       >
-        {pending ? "Submitting Trade Tender…" : "Submit Formal Trade RFQ →"}
+        <span>{pending ? "Submitting…" : "Submit trade RFQ"}</span>
       </button>
     </form>
+  );
+}
+
+function SectionLabel({ n, title }: { n: string; title: string }) {
+  return (
+    <div className="flex items-center gap-3 border-b border-[var(--srn-line)] pb-2">
+      <span className="font-mono text-[11px] text-[var(--srn-accent-deep)]">{n}</span>
+      <h3 className="font-display text-lg tracking-tight">{title}</h3>
+    </div>
   );
 }
 

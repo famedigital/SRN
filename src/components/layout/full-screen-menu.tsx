@@ -29,7 +29,7 @@ interface FullScreenMenuProps {
 // 4 Global Trade Hubs Clock
 function GlobalTradingHubs() {
   const [hubTimes, setHubTimes] = useState<{
-    delhi: string;
+    kolkata: string;
     dubai: string;
     rotterdam: string;
     singapore: string;
@@ -47,7 +47,7 @@ function GlobalTradingHubs() {
         }).format(now);
 
       setHubTimes({
-        delhi: getFormattedTime("Asia/Kolkata"),
+        kolkata: getFormattedTime("Asia/Kolkata"),
         dubai: getFormattedTime("Asia/Dubai"),
         rotterdam: getFormattedTime("Europe/Amsterdam"),
         singapore: getFormattedTime("Asia/Singapore"),
@@ -65,8 +65,8 @@ function GlobalTradingHubs() {
     <div className="hidden xl:flex items-center gap-5 text-[11px] font-mono text-white/50">
       <div className="flex items-center gap-1.5">
         <Clock className="w-3.5 h-3.5 text-[#E2C37B]" />
-        <span className="text-[#E2C37B] font-semibold">DELHI:</span>
-        <span className="text-white">{hubTimes.delhi} IST</span>
+        <span className="text-[#E2C37B] font-semibold">KOLKATA HQ:</span>
+        <span className="text-white">{hubTimes.kolkata} IST</span>
       </div>
       <span className="text-white/20">|</span>
       <div>
@@ -143,13 +143,13 @@ export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[100] flex flex-col justify-between overflow-y-auto bg-[#05090E]/98 text-white backdrop-blur-3xl selection:bg-[#C5A059] selection:text-black"
+          className="fixed inset-0 z-[100] flex flex-col justify-between overflow-y-auto bg-[radial-gradient(ellipse_at_top,rgba(201,165,106,0.12),transparent_42%),linear-gradient(165deg,#05080c_0%,#0a1018_48%,#06090e_100%)] text-[#FFFCF5] backdrop-blur-3xl selection:bg-[var(--srn-champagne)] selection:text-black"
           role="dialog"
           aria-modal="true"
           aria-label="SRN Global Merchant Architectural Directory"
         >
           {/* Top Bar with Brand, Hub Telemetry & Close Action */}
-          <div className="sticky top-0 z-20 flex items-center justify-between border-b border-[#C5A059]/25 bg-[#060B10]/90 px-6 py-4.5 backdrop-blur-2xl md:px-12">
+          <div className="sticky top-0 z-20 flex items-center justify-between border-b border-[var(--srn-champagne)]/20 bg-[color-mix(in_srgb,var(--srn-obsidian)_88%,transparent)] px-6 py-4 backdrop-blur-2xl md:px-12">
             
             {/* Brand Emblem & Legal Title */}
             <Link
@@ -213,22 +213,22 @@ export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
             {/* Column 1 (3 Cols): Strategic Navigation & Accreditations */}
             <div className="lg:col-span-3 flex flex-col justify-between space-y-6">
               <div>
-                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#E2C37B] font-semibold block mb-3">
-                  Trade Dossier Directory
+                <span className="mb-3 block font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--srn-champagne)]">
+                  Directory
                 </span>
-                
-                <nav className="flex flex-col space-y-1.5" aria-label="Mega menu directory">
+
+                <nav className="flex flex-col space-y-1" aria-label="Mega menu directory">
                   {nav.map((item, idx) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={onClose}
-                      className="group flex items-center justify-between py-2 text-xl font-display font-semibold tracking-tight text-white/75 hover:text-white transition-all border-b border-white/5"
+                      className="group flex items-center justify-between border-b border-white/8 py-2.5 font-display text-xl font-semibold tracking-tight text-[var(--srn-nav-muted)] transition-all hover:text-[#FFFCF5]"
                     >
-                      <span className="group-hover:translate-x-2 transition-transform duration-200">
+                      <span className="transition-transform duration-200 group-hover:translate-x-2">
                         {item.label}
                       </span>
-                      <span className="text-xs font-mono text-[#C5A059]/50 group-hover:text-[#E2C37B]">
+                      <span className="font-mono text-xs text-[var(--srn-champagne)]/45 group-hover:text-[var(--srn-champagne)]">
                         0{idx + 1}
                       </span>
                     </Link>
@@ -236,12 +236,12 @@ export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
                   <Link
                     href="/faq"
                     onClick={onClose}
-                    className="group flex items-center justify-between py-2 text-xl font-display font-semibold tracking-tight text-white/75 hover:text-white transition-all border-b border-white/5"
+                    className="group flex items-center justify-between border-b border-white/8 py-2.5 font-display text-xl font-semibold tracking-tight text-[var(--srn-nav-muted)] transition-all hover:text-[#FFFCF5]"
                   >
-                    <span className="group-hover:translate-x-2 transition-transform duration-200">
-                      Trade Assurance FAQ
+                    <span className="transition-transform duration-200 group-hover:translate-x-2">
+                      FAQ
                     </span>
-                    <span className="text-xs font-mono text-[#C5A059]/50 group-hover:text-[#E2C37B]">
+                    <span className="font-mono text-xs text-[var(--srn-champagne)]/45 group-hover:text-[var(--srn-champagne)]">
                       07
                     </span>
                   </Link>
@@ -279,7 +279,7 @@ export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
               {/* Direct Trade Desk Contacts */}
               <div className="rounded-2xl border border-[#C5A059]/30 bg-black/40 p-4.5">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#E2C37B] block mb-2 font-semibold">
-                  New Delhi Trade Desk
+                  Kolkata Trade Desk
                 </span>
                 <div className="space-y-2 text-xs font-mono">
                   <a

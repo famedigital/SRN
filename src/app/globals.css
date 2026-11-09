@@ -13,10 +13,16 @@
   --srn-ink-muted: #576574;
   --srn-line: #e3ded5;
   --srn-line-strong: #c8c0b2;
-  --srn-accent: #c5a059;
-  --srn-accent-deep: #9e7d3b;
-  --srn-accent-soft: #fcf8ee;
-  --srn-accent-glow: color-mix(in srgb, #c5a059 30%, transparent);
+  --srn-accent: #c9a56a;
+  --srn-accent-deep: #8f6d35;
+  --srn-accent-soft: #faf6ee;
+  --srn-accent-glow: color-mix(in srgb, #d4af74 32%, transparent);
+  --srn-champagne: #e8d5a8;
+  --srn-champagne-bright: #f3e6c4;
+  --srn-obsidian: #05080c;
+  --srn-obsidian-lift: #0c1219;
+  --srn-nav-muted: rgba(243, 230, 196, 0.55);
+  --srn-nav-text: rgba(255, 252, 245, 0.88);
   --srn-indigo: #0a1118;
   --srn-indigo-deep: #060b10;
   --srn-lacquer: #c5a059;
@@ -42,9 +48,9 @@
   --color-ink: var(--srn-ink);
   --color-navy: var(--srn-indigo);
   --color-bullion: var(--srn-accent);
-  --font-sans: var(--font-dm-sans);
-  --font-display: var(--font-syne);
-  --font-mono: var(--font-ibm-plex);
+  --font-sans: var(--font-ibm-plex-sans);
+  --font-display: var(--font-outfit);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 * {
@@ -75,8 +81,10 @@ body {
     radial-gradient(900px 500px at 95% 0%, color-mix(in srgb, #e6ca85 10%, transparent), transparent 50%),
     var(--srn-canvas);
   color: var(--srn-ink);
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
-  line-height: 1.6;
+  font-family: var(--font-ibm-plex-sans), "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01" on, "cv11" on;
+  line-height: 1.65;
+  letter-spacing: 0.005em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -87,15 +95,26 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-syne), var(--font-dm-sans), system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
+  font-family: var(--font-outfit), var(--font-ibm-plex-sans), ui-sans-serif, sans-serif;
+  font-weight: 650;
+  letter-spacing: -0.028em;
+  line-height: 1.08;
+  font-feature-settings: "ss01" on;
 }
 
 .font-mono {
-  font-family: var(--font-ibm-plex), ui-monospace, monospace;
+  font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-outfit), var(--font-ibm-plex-sans), ui-sans-serif, sans-serif;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
 }
 
 :focus-visible {

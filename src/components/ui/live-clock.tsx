@@ -55,7 +55,7 @@ export function LiveClock({ className = "", showMultiZone = false }: LiveClockPr
     return (
       <div className={`font-mono text-xs text-white/50 flex items-center gap-2 ${className}`}>
         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-        <span>NEW DELHI HQ: 09:30 IST · MARKET DESK OPEN</span>
+        <span>KOLKATA HQ: 09:30 IST · MARKET DESK OPEN</span>
       </div>
     );
   }
@@ -69,7 +69,7 @@ export function LiveClock({ className = "", showMultiZone = false }: LiveClockPr
               time.isMarketOpen ? "bg-emerald-400 animate-pulse" : "bg-amber-400"
             }`}
           />
-          <span className="text-[#E2C37B] font-semibold">NEW DELHI / MUMBAI:</span>
+          <span className="font-semibold text-white/70">KOLKATA / MUMBAI:</span>
           <span className="text-white">{time.ist} IST</span>
           <span className="text-[10px] text-white/40">
             ({time.isMarketOpen ? "DESK ACTIVE" : "AFTER HOURS"})
@@ -90,7 +90,7 @@ export function LiveClock({ className = "", showMultiZone = false }: LiveClockPr
           time.isMarketOpen ? "bg-emerald-400 animate-pulse" : "bg-emerald-400"
         }`}
       />
-      <span className="text-[#E2C37B] font-medium">NEW DELHI HQ:</span>
+      <span className="font-medium text-white/70">KOLKATA HQ:</span>
       <span className="text-white font-mono">{time.ist} IST</span>
       <span className="hidden xl:inline text-white/40">
         · {time.isMarketOpen ? "LIVE TRADE DESK OPEN" : "INQUIRY QUEUE ACTIVE"}

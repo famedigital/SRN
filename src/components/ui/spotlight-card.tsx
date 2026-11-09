@@ -7,10 +7,12 @@ export function SpotlightCard({
   children,
   className,
   variant = "light",
+  id,
 }: {
   children: ReactNode;
   className?: string;
   variant?: "light" | "dark";
+  id?: string;
 }) {
   const [coords, setCoords] = useState({ x: 0, y: 0, active: false });
 
@@ -30,10 +32,11 @@ export function SpotlightCard({
 
   return (
     <div
+      id={id}
       className={cn(
         variant === "dark" ? "spotlight-card-dark" : "spotlight-card",
-        "group h-full flex flex-col justify-between p-6 md:p-7 relative transition-all duration-300",
-        className
+        "group relative flex h-full flex-col justify-between p-6 transition-all duration-300 md:p-7",
+        className,
       )}
       onMouseMove={onMove}
       onMouseLeave={onLeave}

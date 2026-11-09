@@ -132,7 +132,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-baseline justify-between border-b border-white/5 pb-2">
                   <span className="font-mono text-white/50 uppercase">Jurisdiction</span>
-                  <span className="font-medium text-white">New Delhi, Republic of India</span>
+                  <span className="font-medium text-white">Kolkata, Republic of India</span>
                 </div>
                 <div className="flex items-baseline justify-between border-b border-white/5 pb-2">
                   <span className="font-mono text-white/50 uppercase">Export Accreditations</span>

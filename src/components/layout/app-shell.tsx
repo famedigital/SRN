@@ -6,6 +6,7 @@ import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 import { RfqDock } from "@/components/rfq/rfq-dock";
 import { RfqProvider } from "@/components/rfq/rfq-store";
+import { BackToTop } from "@/components/ui/back-to-top";
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -23,6 +24,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       </main>
       <SiteFooter />
       <RfqDock />
+      <BackToTop />
     </RfqProvider>
   );
 }

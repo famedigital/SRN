@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
-import { DM_Sans, IBM_Plex_Mono, Syne } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Outfit } from "next/font/google";
 import { Toaster } from "sonner";
 import { AppShell } from "@/components/layout/app-shell";
 import { brand, home } from "../../content/copy";
 import { CorporationJsonLd } from "@/components/seo/json-ld";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
 
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const ibmPlex = IBM_Plex_Mono({
-  variable: "--font-ibm-plex",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     "Spices Board of India exporter",
     "SGS inspected spices India",
     "Indian merchant trading company",
-    "New Delhi export house",
+    "Kolkata export house",
     "FOB Mundra JNPT Nhava Sheva",
     "Incoterms 2020 commodity contracts",
     "traditional Indian perfumes attar wholesale",
@@ -55,6 +56,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -64,10 +75,10 @@ export const metadata: Metadata = {
     description: home.seoDescription,
     images: [
       {
-        url: `${siteUrl}/brand/srn-logo.png`,
-        width: 1200,
-        height: 1200,
-        alt: `${brand.publicName} Sovereign Gold Seal`,
+        url: `${siteUrl}/brand/srn-logo-transparent.png`,
+        width: 1254,
+        height: 1254,
+        alt: `${brand.publicName} emblem`,
       },
     ],
   },
@@ -75,7 +86,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${brand.publicName} — Indian Merchant Export & Sourcing House`,
     description: home.seoDescription,
-    images: [`${siteUrl}/brand/srn-logo.png`],
+    images: [`${siteUrl}/brand/srn-logo-transparent.png`],
   },
   robots: {
     index: true,
@@ -89,10 +100,10 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    "geo.region": "IN-DL",
-    "geo.placename": "New Delhi",
-    "geo.position": "28.6139;77.2090",
-    ICBM: "28.6139, 77.2090",
+    "geo.region": "IN-WB",
+    "geo.placename": "Kolkata",
+    "geo.position": "22.5726;88.3639",
+    ICBM: "22.5726, 88.3639",
   },
 };
 
@@ -102,7 +113,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <CorporationJsonLd />
       </head>
-      <body className={`${dmSans.variable} ${syne.variable} ${ibmPlex.variable} min-h-svh`}>
+      <body
+        className={`${ibmPlexSans.variable} ${outfit.variable} ${ibmPlexMono.variable} min-h-svh font-sans antialiased`}
+      >
         <AppShell>{children}</AppShell>
         <Toaster position="top-center" closeButton />
       </body>

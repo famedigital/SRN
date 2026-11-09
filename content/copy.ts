@@ -9,10 +9,15 @@ export const brand = {
 } as const;
 
 export const contactPlaceholders = {
-  address: "[Business address — to be confirmed]",
-  email: "[Business enquiry email — to be confirmed]",
-  phone: "[Phone / WhatsApp — to be confirmed]",
-  hours: "Business hours: IST (to be confirmed)",
+  city: "Kolkata",
+  region: "West Bengal",
+  country: "India",
+  address: "Kolkata, West Bengal, India",
+  addressNote: "Registered HQ · street line shared on engagement",
+  email: "trade@srnglobal.in",
+  phone: "+91 (shared on desk confirmation)",
+  hours: "Mon–Fri · 09:30–18:30 IST",
+  hoursNote: "Enquiry queue monitored outside desk hours",
 } as const;
 
 export const nav = [
@@ -213,9 +218,20 @@ export const productsPage = {
   seoTitle: "Products — SRN sourcing portfolio",
   seoDescription:
     "Spices, agro, packaged foods, perfumes, garments, and Indian handicrafts for wholesale and import buyers.",
-  heading: "Products for diverse markets and everyday demand.",
+  heading: "Six sourcing divisions. One commercial desk.",
   intro:
-    "MOQ and commercial terms are confirmed per enquiry. Use Add to RFQ on any line, then send one consolidated request.",
+    "Each line is specified to grade, pack, and lot — not a web shop. Add lines to your RFQ matrix, then send one consolidated trade enquiry with destination and Incoterm.",
+  assurance: [
+    { title: "Grade first", body: "Buyer grade / ASTA / mesh confirmed before commercial lock." },
+    { title: "Docs ready", body: "COA, phyto, and inspection windows agreed in writing." },
+    { title: "One RFQ thread", body: "Multiple categories in a single reference number." },
+  ],
+  howHeading: "How buyers usually proceed",
+  how: [
+    "Open the division that matches your requirement.",
+    "Add one or more lines to the RFQ matrix.",
+    "Submit destination, Incoterm, and volume on Contact.",
+  ],
 } as const;
 
 export const productCategories: ProductCategory[] = [
@@ -383,9 +399,15 @@ export const contact = {
   seoTitle: "Contact & trade enquiry — SRN",
   seoDescription:
     "Send a trade enquiry to SRN PRINTOTRADING. Specs, volume, Incoterms, and destination.",
-  heading: "Let’s discuss your next trade opportunity.",
+  heading: "Open a trade conversation with the desk.",
   intro:
-    "Use the form for buying, import, or supply-partner notes. One submission can list several product lines from your RFQ dock.",
+    "Buying, import, or supply-partner notes — one form. Pull product lines from your RFQ matrix, add grade and destination, and we reply with commercial next steps.",
+  responseNote: "Typical first reply within 1–2 business days (IST), with clarifying questions if grade or docs are incomplete.",
+  steps: [
+    { n: "01", title: "You", body: "Company, destination, categories, and written specs." },
+    { n: "02", title: "Desk", body: "Availability, grade options, and commercial path." },
+    { n: "03", title: "Next", body: "Quote outline, sample terms, or inspection window." },
+  ],
   success:
     "We have your enquiry. Someone on the trade desk will reply with terms and next steps. Keep your reference number for follow-up.",
   consent:
