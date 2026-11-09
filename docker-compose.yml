@@ -1,0 +1,15 @@
+# Optional — use when Docker is available. Default local DB is PGlite (.data/pglite).
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: srn
+      POSTGRES_PASSWORD: srn_local
+      POSTGRES_DB: srn
+    volumes:
+      - srn_pg:/var/lib/postgresql/data
+
+volumes:
+  srn_pg:

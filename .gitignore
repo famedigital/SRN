@@ -32,6 +32,21 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# local secrets / credential notes — never push
+*.local.md
+NOTES-*.local.md
+NOTES-SUPABASE-GITHUB.local.md
+
+# duplicate source asset (canonical copy lives in public/brand)
+/WhatsApp Image*.jpeg
+/WhatsApp Image*.jpg
+
+# local data
+.data/
+storage/
+_extract/
 
 # vercel
 .vercel
