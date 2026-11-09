@@ -4,6 +4,10 @@ import { LogoutButton } from "@/components/admin/logout-button";
 import { getSessionUser } from "@/lib/auth/session";
 import { seedDatabase } from "@/lib/db/seed";
 
+/** Never prerender desk pages — they need live Postgres at request time. */
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 const NAV = [
   { href: "/admin", label: "Dashboard" },
   { href: "/admin/enquiries", label: "Enquiries" },

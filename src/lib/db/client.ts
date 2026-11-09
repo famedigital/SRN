@@ -33,6 +33,14 @@ async function createPostgresDb(): Promise<Db> {
   const needsSsl =
     /supabase\.co|sslmode=require/i.test(connectionString) ||
     process.env.DATABASE_SSL === "true";
+  // Prefer IPv4 — Vercel often cannot reach Supabase direct AAAA (ENETUNREACH)
+  try {
+    const dns = await import("node:dns");
+    dns.setDefaultResultOrder?.("ipv4first");
+  } catch {
+    /* ignore */
+  }
+
   const pool = new pg.Pool({
     connectionString,
     ssl: needsSsl ? { rejectUnauthorized: false } : undefined,
