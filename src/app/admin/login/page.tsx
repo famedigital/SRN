@@ -26,7 +26,15 @@ function LoginForm() {
           totp: fd.get("totp") || undefined,
         }),
       });
-      const data = await res.json();
+      const raw = await res.text();
+      let data: { error?: string; requires2fa?: boolean } = {};
+      try {
+        data = raw ? (JSON.parse(raw) as typeof data) : {};
+      } catch {
+        throw new Error(
+          res.ok ? "Unexpected server response." : `Login failed (${res.status}).`,
+        );
+      }
       if (!res.ok) {
         if (data.requires2fa) setRequires2fa(true);
         throw new Error(data.error ?? "Login failed");

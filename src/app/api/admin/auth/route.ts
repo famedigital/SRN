@@ -18,44 +18,57 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Too many attempts." }, { status: 429 });
   }
 
-  const body = await req.json();
-  const { email, password, totp } = body as {
-    email?: string;
-    password?: string;
-    totp?: string;
-  };
-  if (!email || !password) {
-    return NextResponse.json({ error: "Email and password required." }, { status: 400 });
-  }
-
-  const user = await verifyCredentials(email, password);
-  if (!user) {
-    return NextResponse.json({ error: "Invalid credentials." }, { status: 401 });
-  }
-
-  if (user.twoFactorEnabled) {
-    if (!totp || !user.twoFactorSecret || !verifyTotp(user.twoFactorSecret, totp)) {
-      return NextResponse.json(
-        { error: "Two-factor code required.", requires2fa: true },
-        { status: 401 },
-      );
+  try {
+    const body = await req.json();
+    const { email, password, totp } = body as {
+      email?: string;
+      password?: string;
+      totp?: string;
+    };
+    if (!email || !password) {
+      return NextResponse.json({ error: "Email and password required." }, { status: 400 });
     }
+
+    const user = await verifyCredentials(email, password);
+    if (!user) {
+      return NextResponse.json({ error: "Invalid credentials." }, { status: 401 });
+    }
+
+    if (user.twoFactorEnabled) {
+      if (!totp || !user.twoFactorSecret || !verifyTotp(user.twoFactorSecret, totp)) {
+        return NextResponse.json(
+          { error: "Two-factor code required.", requires2fa: true },
+          { status: 401 },
+        );
+      }
+    }
+
+    await createSession(user.id);
+    const db = await getDb();
+    await db.insert(auditLogs).values({
+      actorId: user.id,
+      actorEmail: user.email,
+      action: "LOGIN",
+      resource: "auth",
+      ipAddress: ip,
+    });
+
+    return NextResponse.json({
+      ok: true,
+      user: {
+        email: user.email,
+        role: user.role,
+        twoFactorEnabled: user.twoFactorEnabled,
+      },
+    });
+  } catch (err) {
+    console.error("[admin/auth] login failed", err);
+    const message =
+      err instanceof Error && /ENETUNREACH|ECONNREFUSED|DATABASE_URL|connect/i.test(err.message)
+        ? "Database unavailable. Check DATABASE_URL (use Supabase pooler)."
+        : "Login failed. Please try again.";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
-
-  await createSession(user.id);
-  const db = await getDb();
-  await db.insert(auditLogs).values({
-    actorId: user.id,
-    actorEmail: user.email,
-    action: "LOGIN",
-    resource: "auth",
-    ipAddress: ip,
-  });
-
-  return NextResponse.json({
-    ok: true,
-    user: { email: user.email, role: user.role, twoFactorEnabled: user.twoFactorEnabled },
-  });
 }
 
 export async function DELETE() {
