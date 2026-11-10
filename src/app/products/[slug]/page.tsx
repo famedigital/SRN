@@ -33,7 +33,7 @@ export default async function ProductCategoryPage({ params }: Props) {
     "@type": "Product",
     name: `${cat.name} — Bulk Sourcing & Export`,
     description: cat.summary,
-    category: `HS Chapter ${cat.hsCode}`,
+    category: cat.name,
     image: `https://srnglobal.in${categoryImage(cat.slug)}`,
     brand: {
       "@type": "Brand",
@@ -72,7 +72,7 @@ export default async function ProductCategoryPage({ params }: Props) {
           <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
             <div>
               <Eyebrow className="text-[#E2C37B]">
-                {String(idx + 1).padStart(2, "0")} · HS {cat.hsCode}
+                Division {String(idx + 1).padStart(2, "0")}
               </Eyebrow>
               <h1 className="font-display mt-2 text-[clamp(2rem,4vw,3.5rem)] tracking-tight text-white">
                 {cat.name}

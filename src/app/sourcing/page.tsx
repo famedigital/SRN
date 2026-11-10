@@ -79,7 +79,7 @@ export default function SourcingPage() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-[var(--srn-line)]">
               <Image
                 src={media.sourcingInspection}
-                alt="SGS & Laboratory Testing Protocol"
+                alt="Laboratory test and audit protocol"
                 fill
                 sizes="(max-width:1024px) 100vw, 40vw"
                 className="object-cover"

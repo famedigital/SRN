@@ -5,15 +5,15 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
-const LOGO_SRC = "/brand/srn-logo.png";
+const LOGO_SRC = "/brand/srn-logo-transparent.png";
 
 type Size = "sm" | "md" | "lg" | "hero";
 
 const sizes: Record<Size, { box: string; px: number }> = {
-  sm: { box: "h-10 w-10", px: 40 },
-  md: { box: "h-14 w-14", px: 56 },
-  lg: { box: "h-32 w-32 md:h-40 md:w-40", px: 160 },
-  hero: { box: "h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64", px: 256 },
+  sm: { box: "h-12 w-12", px: 48 },
+  md: { box: "h-16 w-16 md:h-[4.5rem] md:w-[4.5rem]", px: 72 },
+  lg: { box: "h-36 w-36 md:h-44 md:w-44", px: 176 },
+  hero: { box: "h-52 w-52 sm:h-60 sm:w-60 md:h-72 md:w-72", px: 288 },
 };
 
 interface AnimatedLogoProps {

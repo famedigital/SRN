@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Mail, MapPin, Phone, Clock3, ShieldCheck, ArrowUpRight } from "lucide-react";
-import { contact, contactPlaceholders } from "../../../content/copy";
+import { brand, contact, contactPlaceholders, leadership, presence } from "../../../content/copy";
 import { EnquiryForm } from "@/components/contact/enquiry-form";
 import { Container, Eyebrow, GoldRule } from "@/components/ui/section";
 import { media } from "@/lib/media";
@@ -61,13 +61,13 @@ export default function ContactPage() {
           <div className="overflow-hidden rounded-3xl border border-[var(--srn-line)] bg-[var(--srn-paper)] shadow-[var(--srn-shadow)]">
             <div className="border-b border-[var(--srn-line)] bg-[linear-gradient(135deg,rgba(201,165,106,0.14),transparent_60%)] px-6 py-5">
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--srn-accent-deep)]">
-                Headquarters
+                Company Information
               </p>
               <h2 className="font-display mt-1 text-xl font-bold tracking-tight">
-                Kolkata, India
+                {brand.legalName}
               </h2>
-              <p className="mt-1 text-sm text-[var(--srn-ink-muted)]">
-                SRN PRINTOTRADING PRIVATE LIMITED
+              <p className="mt-1 font-mono text-xs text-[var(--srn-ink-muted)]">
+                CIN {contactPlaceholders.cin}
               </p>
             </div>
 
@@ -88,7 +88,7 @@ export default function ContactPage() {
                 icon={Phone}
                 label="Phone / WhatsApp"
                 value={contactPlaceholders.phone}
-                note="Prefer the RFQ form for first contact"
+                note="Or use a direct leadership line below"
               />
               <ContactRow
                 icon={Clock3}
@@ -97,6 +97,15 @@ export default function ContactPage() {
                 note={contactPlaceholders.hoursNote}
               />
             </ul>
+
+            <div className="border-t border-[var(--srn-line)] px-6 py-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--srn-accent-deep)]">
+                Our Presence
+              </p>
+              <p className="mt-2 text-sm font-medium text-[var(--srn-ink)]">
+                {presence.join(" · ")}
+              </p>
+            </div>
           </div>
 
           <div className="rounded-3xl border border-[var(--srn-champagne)]/25 bg-[var(--srn-obsidian)] p-5 text-white">
@@ -136,7 +145,7 @@ export default function ContactPage() {
                 </p>
               </div>
               <Link
-                href="mailto:trade@srnglobal.in"
+                href={`mailto:${contactPlaceholders.email}`}
                 className="inline-flex items-center gap-1.5 rounded-full border border-[var(--srn-line-strong)] px-3.5 py-2 text-xs font-semibold text-[var(--srn-ink-soft)] transition hover:border-[var(--srn-accent)] hover:text-[var(--srn-accent-deep)]"
               >
                 Email desk
@@ -149,6 +158,50 @@ export default function ContactPage() {
               >
                 <EnquiryForm />
               </Suspense>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--srn-accent-deep)]">
+              Leadership and Direct Contacts
+            </p>
+            <h2 className="font-display mt-2 text-2xl font-bold tracking-tight">
+              Speak with the desk
+            </h2>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              {leadership.map((person, i) => (
+                <div
+                  key={person.email}
+                  className={`rounded-2xl border border-[var(--srn-line)] bg-[var(--srn-paper)] p-5 shadow-[var(--srn-shadow)] ${
+                    i % 2 === 0
+                      ? "border-t-4 border-t-[var(--srn-champagne)]"
+                      : "border-t-4 border-t-[var(--srn-navy)]"
+                  }`}
+                >
+                  <p className="font-display text-lg font-bold tracking-tight">{person.name}</p>
+                  <p className="mt-1 text-sm text-[var(--srn-ink-muted)]">{person.title}</p>
+                  {"titleAlt" in person && person.titleAlt ? (
+                    <p className="mt-0.5 text-xs text-[var(--srn-ink-muted)]">{person.titleAlt}</p>
+                  ) : null}
+                  <div className="mt-4 space-y-1.5 text-sm">
+                    <a
+                      href={`mailto:${person.email}`}
+                      className="block font-medium text-[var(--srn-accent-deep)] transition hover:underline"
+                    >
+                      {person.email}
+                    </a>
+                    {person.phones.map((phone) => (
+                      <a
+                        key={phone}
+                        href={`tel:${phone.replace(/\s/g, "")}`}
+                        className="block text-[var(--srn-ink-soft)] transition hover:text-[var(--srn-ink)]"
+                      >
+                        {phone}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

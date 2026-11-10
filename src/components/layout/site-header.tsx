@@ -63,9 +63,9 @@ export function SiteHeader() {
           </div>
         </div>
 
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 md:h-[4.25rem] md:px-8">
-          <Link href="/" className="flex items-center gap-3" aria-label={`${brand.publicName} home`}>
-            <AnimatedLogo size="sm" priority label={`${brand.publicName} emblem`} />
+        <div className="mx-auto flex h-[4.75rem] max-w-7xl items-center justify-between gap-4 px-5 md:h-20 md:px-8">
+          <Link href="/" className="flex items-center gap-3.5" aria-label={`${brand.publicName} home`}>
+            <AnimatedLogo size="md" priority label={`${brand.publicName} emblem`} />
             <span>
               <span className="font-display block text-lg font-semibold tracking-tight text-white">
                 {brand.publicName}

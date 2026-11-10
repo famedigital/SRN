@@ -12,13 +12,49 @@ export const contactPlaceholders = {
   city: "Kolkata",
   region: "West Bengal",
   country: "India",
-  address: "Kolkata, West Bengal, India",
-  addressNote: "Registered HQ · street line shared on engagement",
-  email: "trade@srnglobal.in",
-  phone: "+91 (shared on desk confirmation)",
+  address: "Block-A-335, Lake Town, Kolkata 700089, India",
+  addressNote: "Registered headquarters",
+  email: "corporate@srnglobal.in",
+  phone: "+91 7980 670004",
   hours: "Mon–Fri · 09:30–18:30 IST",
   hoursNote: "Enquiry queue monitored outside desk hours",
+  cin: "U18115WB2026PTC288446",
 } as const;
+
+export const presence = [
+  "India",
+  "Bhutan",
+  "United Kingdom",
+  "United States of America",
+] as const;
+
+export const leadership = [
+  {
+    name: "Sony Bagchi",
+    title: "Founder & Managing Director",
+    titleAlt: "President & Chairperson, Art of Loving Foundation",
+    email: "sony@srnglobal.in",
+    phones: ["+91 7980 670004"],
+  },
+  {
+    name: "Hirak Ghosh",
+    title: "Director, Business Development and Global Client Relationship",
+    email: "hirak@srnglobal.in",
+    phones: ["+44 7448508194", "+91 91630 31821"],
+  },
+  {
+    name: "SB Narayan Ray",
+    title: "Director, Business Development, Alliances, Corporate Communications",
+    email: "sbnray@srnglobal.in",
+    phones: ["+91 9830204336"],
+  },
+  {
+    name: "Nayan Ghosh",
+    title: "Executive Director, Supply Chain, Sourcing & Logistics",
+    email: "nayan@srnglobal.in",
+    phones: ["+91 98307 94382"],
+  },
+] as const;
 
 export const nav = [
   { href: "/", label: "Home" },
@@ -35,7 +71,7 @@ export const home = {
     "Merchant export and import from India: spices, agro, packaged foods, perfumes, garments, and handicrafts. Send a trade enquiry.",
   hero: {
     headline: "From India’s sources to your warehouse.",
-    body: "We connect importers and distributors with spices, herbs, agro lots, packaged foods, fragrances, garments, and artisan goods — with clear specs and straight commercial talk.",
+    body: "We connect importers and distributors with spices, herbs, agro lots, organic farm produce, packaged foods, fragrances, garments, and artisan goods — with clear specs and straight commercial talk.",
     primaryCta: { href: "/products", label: "Explore products" },
     secondaryCta: { href: "/contact", label: "Send a trade enquiry" },
   },
@@ -80,7 +116,7 @@ export const home = {
   },
   portfolioHeading: "What we source",
   portfolioSub:
-    "Six lines. Specs and MOQ confirmed per enquiry — not a web shop.",
+    "Seven lines. Specs and MOQ confirmed per enquiry — not a web shop.",
   regions: {
     heading: "Where the goods come from",
     body: "India is not one warehouse. Crop belts, coastal packers, and inland workshops each have their season and capacity. We match your requirement to the right pocket of supply — and we say when a belt is short.",
@@ -141,7 +177,7 @@ export const about = {
   seoDescription:
     "SRN PRINTOTRADING is a merchant export and import company within a diversified Indian business group.",
   heading: "Built on relationships. Driven by opportunity.",
-  lead: "We buy and sell across borders: spices and herbs, agro products, packaged foods, perfumes, garments, and Indian handicrafts. When a buyer needs something outside the usual list, we source it.",
+  lead: "We buy and sell across borders: spices and herbs, agro products, organic farming, packaged foods, perfumes, garments, and Indian handicrafts. When a buyer needs something outside the usual list, we source it.",
   story: {
     heading: "How we think about trade",
     paragraphs: [
@@ -217,8 +253,8 @@ export type ProductCategory = {
 export const productsPage = {
   seoTitle: "Products — SRN sourcing portfolio",
   seoDescription:
-    "Spices, agro, packaged foods, perfumes, garments, and Indian handicrafts for wholesale and import buyers.",
-  heading: "Six sourcing divisions. One commercial desk.",
+    "Spices, agro, organic farming, packaged foods, perfumes, garments, and Indian handicrafts for wholesale and import buyers.",
+  heading: "Seven sourcing divisions. One commercial desk.",
   intro:
     "Each line is specified to grade, pack, and lot — not a web shop. Add lines to your RFQ matrix, then send one consolidated trade enquiry with destination and Incoterm.",
   assurance: [
@@ -239,7 +275,7 @@ export const productCategories: ProductCategory[] = [
     slug: "spices-herbs",
     name: "Spices & Herbs",
     short: "Whole, ground, blends, and culinary herbs.",
-    hsCode: "09",
+    hsCode: "",
     summary:
       "Black pepper, green cardamom, turmeric fingers and powder, cumin, dry red chillies, ginger, and selected herbs. Grades matched to your market — not a single ‘export quality’ label for everything.",
     botanical: "Varies by commodity",
@@ -259,7 +295,7 @@ export const productCategories: ProductCategory[] = [
     slug: "agro",
     name: "Agro Commodities",
     short: "Grains, pulses, oilseeds, basmati, staples.",
-    hsCode: "10 / 07 / 12",
+    hsCode: "",
     summary:
       "Agricultural lots sized to destination quarantine rules. We align variety, broken %, and packing with the import market before booking space.",
     grade: "Buyer / destination standard",
@@ -269,15 +305,34 @@ export const productCategories: ProductCategory[] = [
     moq: "Typically container-linked; confirm per crop",
     specs: [
       { label: "Examples", value: "Pulses, oilseeds, basmati rice, staples" },
-      { label: "Inspection", value: "SGS / Intertek / nominated surveyor" },
+      { label: "Inspection", value: "Nominated surveyor / agreed laboratory" },
     ],
     enquiryHints: ["Crop", "Variety", "Destination", "Preferred Incoterm"],
+  },
+  {
+    slug: "organic-farming",
+    name: "Organic Farming",
+    short: "Certified organic produce and farm programmes.",
+    hsCode: "",
+    summary:
+      "Organic farm programmes and produce lots with certification trail for export buyers — spices, staples, and selected horticulture where organic supply can be locked. Traceability and audit windows agreed before commercial commitment.",
+    grade: "Organic / buyer organic standard",
+    moisture: "Per commodity / buyer limit",
+    packaging: ["Food-grade bags", "Cartons", "Buyer-specified retail packs"],
+    container: "LCL or FCL",
+    moq: "Confirmed per crop and certification",
+    specs: [
+      { label: "Focus", value: "Organic produce & farm programmes" },
+      { label: "Assurance", value: "Certification, test & audit as contracted" },
+      { label: "Docs", value: "Organic certs, COA, phyto on request" },
+    ],
+    enquiryHints: ["Crop", "Organic standard", "Volume", "Destination"],
   },
   {
     slug: "packaged-foods",
     name: "Packaged Foods",
     short: "Biscuits, cakes, puffed rice (moori / muri).",
-    hsCode: "19",
+    hsCode: "",
     summary:
       "Biscuits, tea cakes, and authentic puffed rice (moori/muri) for private label or bulk. Shelf life and labelling rules depend on the importing country — we flag that early.",
     grade: "Brand / private label / bulk",
@@ -294,7 +349,7 @@ export const productCategories: ProductCategory[] = [
     slug: "perfumes",
     name: "Perfumes & Fragrances",
     short: "Attars, oils, compounds for wholesale.",
-    hsCode: "33",
+    hsCode: "",
     summary:
       "Attars, essential oils, and fragrance compounds for distributors. Concentrations and pack sizes are stated plainly so customs and formulators know what they are receiving.",
     grade: "As specified (concentration / compound type)",
@@ -311,7 +366,7 @@ export const productCategories: ProductCategory[] = [
     slug: "garments",
     name: "Garments & Apparel",
     short: "Wovens, knits, uniforms, home textiles.",
-    hsCode: "61 / 62",
+    hsCode: "",
     summary:
       "Woven and knitted garments, institutional uniforms, and home textiles. Fabric GSM, size scale, and colourways are locked before production commitments.",
     grade: "Buyer tech pack",
@@ -328,7 +383,7 @@ export const productCategories: ProductCategory[] = [
     slug: "handicrafts",
     name: "Handicrafts, Artefacts & Artworks",
     short: "Made by local artisans — brass, wood, textile, clay.",
-    hsCode: "44 / 69 / 74 / 97 (varies)",
+    hsCode: "",
     summary:
       "Indian handicrafts, artefacts, and artworks from artisan workshops and cooperatives: brassware, carved wood, pottery, handwoven textiles, and decorative pieces. Lead times follow craft capacity, not factory overtime.",
     grade: "Artisan / workshop grade as sampled",
@@ -361,7 +416,7 @@ export const sourcing = {
     },
     {
       title: "Quality inspection",
-      body: "Nominated surveyor or agreed lab (e.g. SGS / Intertek) when the contract calls for it.",
+      body: "Nominated surveyor or agreed laboratory test & audit when the contract calls for it.",
     },
     {
       title: "Customs & certificates",
@@ -425,7 +480,7 @@ export const faq = {
     },
     {
       q: "Which product categories do you cover?",
-      a: "Spices and herbs, agro commodities, packaged foods, perfumes and fragrances, garments and apparel, and Indian handicrafts, artefacts, and artworks.",
+      a: "Spices and herbs, agro commodities, organic farming, packaged foods, perfumes and fragrances, garments and apparel, and Indian handicrafts, artefacts, and artworks.",
     },
     {
       q: "Do you manufacture everything yourselves?",

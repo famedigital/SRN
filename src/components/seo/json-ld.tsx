@@ -1,4 +1,4 @@
-import { brand } from "../../../content/copy";
+import { brand, contactPlaceholders, leadership, presence } from "../../../content/copy";
 
 export function CorporationJsonLd() {
   const schema = {
@@ -7,13 +7,18 @@ export function CorporationJsonLd() {
     name: brand.legalName,
     alternateName: brand.publicName,
     url: "https://srnglobal.in",
-    logo: "https://srnglobal.in/brand/srn-logo.png",
-    image: "https://srnglobal.in/brand/srn-logo.png",
+    logo: "https://srnglobal.in/brand/srn-logo-transparent.png",
+    image: "https://srnglobal.in/brand/srn-logo-transparent.png",
     description:
-      "SRN PRINTOTRADING PRIVATE LIMITED is a premier Indian merchant export and procurement house, supplying agricultural commodities, certified spices, packaged foods, fine attars, garments, and artisan crafts under Incoterms 2020 with SGS/Intertek laboratory verification.",
+      "SRN PRINTOTRADING PRIVATE LIMITED is a premier Indian merchant export and procurement house, supplying agricultural commodities, certified spices, organic farm produce, packaged foods, fine attars, garments, and artisan crafts under Incoterms 2020 with laboratory test and audit verification.",
+    identifier: contactPlaceholders.cin,
+    email: contactPlaceholders.email,
+    telephone: contactPlaceholders.phone,
     address: {
       "@type": "PostalAddress",
+      streetAddress: "Block-A-335, Lake Town",
       addressLocality: "Kolkata",
+      postalCode: "700089",
       addressRegion: "West Bengal",
       addressCountry: "IN",
     },
@@ -22,37 +27,30 @@ export function CorporationJsonLd() {
       latitude: "22.5726",
       longitude: "88.3639",
     },
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        contactType: "trade desk",
-        availableLanguage: ["English", "Hindi"],
-        areaServed: [
-          "Worldwide",
-          "United Arab Emirates",
-          "Saudi Arabia",
-          "Germany",
-          "Netherlands",
-          "United Kingdom",
-          "United States",
-          "Singapore",
-        ],
-      },
-    ],
+    contactPoint: leadership.map((person) => ({
+      "@type": "ContactPoint",
+      contactType: person.title,
+      name: person.name,
+      email: person.email,
+      telephone: person.phones[0],
+      availableLanguage: ["English", "Hindi"],
+      areaServed: [...presence],
+    })),
     knowsAbout: [
-      "Indian Spices and Botanical Herbs Export (HS 09)",
-      "Agro Commodities and 1121 Basmati Rice Trading (HS 10)",
+      "Indian Spices and Botanical Herbs Export",
+      "Agro Commodities and Basmati Rice Trading",
+      "Organic Farming and Certified Produce Export",
       "APEDA RCMC Sourcing Certification",
       "Spices Board of India Regulatory Compliance",
-      "SGS, Bureau Veritas and Intertek Pre-Shipment Inspection",
+      "Pre-Shipment Laboratory Test and Audit",
       "Maritime Shipping through JNPT Mumbai, Mundra and Cochin Ports",
       "Incoterms 2020 Contract Execution (FOB, CIF, CFR, DAP)",
-      "Artisan Indian Handicrafts and Heritage Brassware (HS 44/74/97)",
+      "Artisan Indian Handicrafts and Heritage Brassware",
     ],
-    areaServed: {
-      "@type": "GeoShape",
-      name: "Global Export Destinations",
-    },
+    areaServed: presence.map((name) => ({
+      "@type": "Country",
+      name,
+    })),
   };
 
   return (
@@ -73,7 +71,7 @@ export function FaqJsonLd() {
         name: "How does SRN verify product grade and prevent quality divergence before dispatch?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "SRN operates a rigid pre-shipment quality verification protocol. Independent ISO/IEC 17025 accredited surveyors (such as SGS, Intertek, or Bureau Veritas) draw sealed composite samples directly at warehouse or port stuffing. Laboratory testing confirms moisture %, purity, mesh, and microbial counts. Containers are sealed with ISO 17712 bolt seals, and digital Certificates of Analysis (COA) are transmitted prior to negotiable document handover.",
+          text: "SRN operates a pre-shipment quality verification protocol. Independent accredited surveyors draw sealed composite samples at warehouse or port stuffing. Laboratory testing confirms moisture %, purity, mesh, and microbial counts. Containers are sealed with ISO 17712 bolt seals, and Certificates of Analysis (COA) are transmitted prior to negotiable document handover.",
         },
       },
       {
@@ -89,7 +87,7 @@ export function FaqJsonLd() {
         name: "What are the standard container payloads for Indian spices and basmati rice?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Standard container stowage configurations: For 1121 Basmati Rice and heavy agro commodities, a 20FT FCL carries 24 to 26 Metric Tons in 25kg/50kg PP bags. For whole spices (Cardamom, Pepper, Chillies), a 20FT FCL carries 14 to 18 Metric Tons depending on crop bulk density and carton/jute palletization.",
+          text: "Standard container stowage configurations: For Basmati Rice and heavy agro commodities, a 20FT FCL carries 24 to 26 Metric Tons in 25kg/50kg PP bags. For whole spices (Cardamom, Pepper, Chillies), a 20FT FCL carries 14 to 18 Metric Tons depending on crop bulk density and carton/jute palletization.",
         },
       },
       {

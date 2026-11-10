@@ -6,10 +6,11 @@ export const media = {
   heroAgro: "/media/hero-agro.jpg",
   heroLogistics: "/media/hero-logistics.jpg",
 
-  // 6 Primary Trade Categories
+  // Primary Trade Categories
   categories: {
     "spices-herbs": "/media/category-spices.jpg",
     agro: "/media/category-agro.jpg",
+    "organic-farming": "/media/sourcing-farms.jpg",
     "packaged-foods": "/media/category-packaged-foods.jpg",
     perfumes: "/media/category-perfumes.jpg",
     garments: "/media/category-garments.jpg",

@@ -95,7 +95,7 @@ export default function ProductsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <span className="absolute left-4 top-4 rounded-full border border-[var(--srn-champagne)]/35 bg-black/55 px-3 py-1 font-mono text-[10px] text-[var(--srn-champagne-bright)] backdrop-blur-md">
-                    0{i + 1} · HS {cat.hsCode}
+                    DIV {String(i + 1).padStart(2, "0")}
                   </span>
                   <p className="absolute bottom-4 left-4 right-4 font-mono text-[11px] text-white/75">
                     {cat.short}

@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { brand, contactPlaceholders, nav, productCategories } from "../../../content/copy";
+import {
+  brand,
+  contactPlaceholders,
+  leadership,
+  nav,
+  presence,
+  productCategories,
+} from "../../../content/copy";
 import { AnimatedLogo } from "@/components/brand/animated-logo";
 import { Container } from "@/components/ui/section";
 
@@ -13,7 +20,7 @@ export function SiteFooter() {
       />
       <Container className="relative grid gap-10 py-16 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-5">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <AnimatedLogo size="md" animated={true} label="SRN" />
             <div>
               <p className="font-display text-2xl tracking-tight text-white">{brand.publicName}</p>
@@ -23,6 +30,14 @@ export function SiteFooter() {
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/55">
             Merchant export and import from India — specs, lots, and clear commercial follow-through.
           </p>
+          <div className="mt-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E2C37B]">
+              Our Presence
+            </p>
+            <p className="mt-2 text-sm text-white/80">
+              {presence.join(" · ")}
+            </p>
+          </div>
         </div>
         <div className="md:col-span-2">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E2C37B]">
@@ -62,11 +77,30 @@ export function SiteFooter() {
         </div>
         <div className="md:col-span-2">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E2C37B]">
-            Contact
+            Company
           </p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/55">
-            <li>{contactPlaceholders.email}</li>
-            <li>{contactPlaceholders.phone}</li>
+            <li className="text-white/80">{brand.legalName}</li>
+            <li>CIN {contactPlaceholders.cin}</li>
+            <li>{contactPlaceholders.address}</li>
+            <li>
+              <a
+                href={`mailto:${contactPlaceholders.email}`}
+                className="transition hover:text-white"
+              >
+                {contactPlaceholders.email}
+              </a>
+            </li>
+            <li className="pt-2 text-[11px] uppercase tracking-wider text-[#E2C37B]/80">
+              Direct lines
+            </li>
+            {leadership.slice(0, 2).map((person) => (
+              <li key={person.email}>
+                <a href={`mailto:${person.email}`} className="transition hover:text-white">
+                  {person.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </Container>

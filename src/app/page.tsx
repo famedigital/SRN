@@ -80,7 +80,7 @@ export default function HomePage() {
             <Reveal delay={0.24}>
               <div className="mt-12 pt-6 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-6 text-white/70">
                 <div>
-                  <span className="block text-2xl font-bold font-display text-white">6 Lines</span>
+                  <span className="block text-2xl font-bold font-display text-white">7 Lines</span>
                   <span className="text-xs font-mono text-white/50 uppercase mt-0.5 block">Sourcing Divisions</span>
                 </div>
                 <div>
@@ -88,8 +88,8 @@ export default function HomePage() {
                   <span className="text-xs font-mono text-white/50 uppercase mt-0.5 block">2020: FOB · CIF · CFR</span>
                 </div>
                 <div>
-                  <span className="block text-2xl font-bold font-display text-white">SGS / COA</span>
-                  <span className="text-xs font-mono text-white/50 uppercase mt-0.5 block">Pre-Stuffing Audits</span>
+                  <span className="block text-2xl font-bold font-display text-white">Test / Audit</span>
+                  <span className="text-xs font-mono text-white/50 uppercase mt-0.5 block">Pre-Stuffing COA</span>
                 </div>
                 <div>
                   <span className="block text-2xl font-bold font-display text-[#E2C37B]">100% IEC</span>
@@ -106,7 +106,7 @@ export default function HomePage() {
               {/* Ledger Header */}
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div className="flex items-center gap-3">
-                  <AnimatedLogo size="sm" priority label="SRN Emblem" />
+                  <AnimatedLogo size="md" priority label="SRN Emblem" />
                   <div>
                     <span className="font-display text-base font-bold text-white tracking-wider block">
                       {brand.publicName}
@@ -148,7 +148,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-baseline justify-between pb-1">
                   <span className="font-mono text-white/50 uppercase">Pre-Shipment Audits</span>
-                  <span className="font-medium text-white">SGS · Intertek · Bureau Veritas</span>
+                  <span className="font-medium text-white">Laboratory test &amp; audit</span>
                 </div>
               </div>
 
@@ -220,13 +220,13 @@ export default function HomePage() {
                 <span className="flex items-center justify-center w-10 h-10 rounded-full bg-[#C5A059]/15 text-[#9E7D3B] font-mono text-xs font-bold border border-[#C5A059]/30 mb-5">
                   02
                 </span>
-                <h3 className="font-display text-xl font-bold tracking-tight">Laboratory & SGS Batch Audits</h3>
+                <h3 className="font-display text-xl font-bold tracking-tight">Laboratory Test &amp; Batch Audits</h3>
                 <p className="mt-3 text-xs md:text-sm text-[var(--srn-ink-muted)] leading-relaxed">
                   Every lot undergoes certified pre-shipment laboratory testing (COA) for moisture limits, volatile oils, pesticide residues (EU MRL & US FDA compliance), and phytosanitary clearance.
                 </p>
               </div>
               <div className="mt-6 pt-3 border-t border-[var(--srn-line)] text-[11px] font-mono text-[#9E7D3B]">
-                SGS / INTERTEK INSPECTION
+                TEST &amp; AUDIT INSPECTION
               </div>
             </SpotlightCard>
 
@@ -309,7 +309,7 @@ export default function HomePage() {
                     <CheckCircle2 className="w-3 h-3 text-emerald-600 inline" />
                     SRN Solution:
                   </span>
-                  Dual-sealed composite sampling by SGS/Intertek at port stuffing. Container cannot depart without certified COA matching contract parameters.
+                  Dual-sealed composite sampling with laboratory test &amp; audit at port stuffing. Container cannot depart without certified COA matching contract parameters.
                 </div>
               </div>
 
@@ -403,7 +403,7 @@ export default function HomePage() {
                 
                 <div className="mt-3 rounded-lg bg-red-50/70 p-3 border border-red-100 text-xs text-red-900/80 leading-relaxed">
                   <span className="font-bold block text-red-950 mb-0.5">Competitor Reality:</span>
-                  Mismatched HS codes or delayed Phyto certificates cause $200-$400/day container demurrage at Jebel Ali, Rotterdam, or Newark.
+                  Mismatched customs classifications or delayed Phyto certificates cause $200–$400/day container demurrage at Jebel Ali, Rotterdam, or Newark.
                 </div>
 
                 <div className="mt-3 rounded-lg bg-emerald-50/70 p-3 border border-emerald-100 text-xs text-emerald-950/80 leading-relaxed">
@@ -606,7 +606,7 @@ export default function HomePage() {
                 </h2>
                 <p className="mt-3 max-w-xl text-[var(--srn-ink-muted)]">{home.portfolioSub}</p>
               </div>
-              <Folio n="6 Primary Divisions" />
+              <Folio n="7 Primary Divisions" />
             </div>
           </Reveal>
 
@@ -627,7 +627,7 @@ export default function HomePage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
                     <span className="absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1 font-mono text-[10px] text-white/95 backdrop-blur-md border border-white/20">
-                      {String(i + 1).padStart(2, "0")} · HS {cat.hsCode}
+                      DIV {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
 

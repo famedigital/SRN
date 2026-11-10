@@ -113,6 +113,10 @@ const categoryHighlights: Record<string, { varieties: string; payload: string }>
     varieties: "Moradabad Cast Brassware, Saharanpur Carved Rosewood, Handloom Art",
     payload: "Export Wooden Pallets & Crates (LCL/FCL)",
   },
+  "organic-farming": {
+    varieties: "Certified organic spices, staples & farm programmes",
+    payload: "LCL / FCL by crop & certification",
+  },
 };
 
 export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
@@ -157,7 +161,7 @@ export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
               onClick={onClose}
               className="group flex items-center gap-3.5 transition-opacity hover:opacity-95"
             >
-              <AnimatedLogo size="sm" priority label="SRN Emblem" />
+              <AnimatedLogo size="md" priority label="SRN Emblem" />
               <div>
                 <div className="flex items-center gap-2">
                   <span className="font-display block text-xl font-bold tracking-wider text-white">
@@ -271,7 +275,7 @@ export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
-                    <span>SGS / Intertek Inspection Nominated</span>
+                    <span>Laboratory Test &amp; Audit Nominated</span>
                   </li>
                 </ul>
               </div>
@@ -349,10 +353,7 @@ export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
                         
                         <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5">
                           <span className="px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[9px] font-mono text-[#E2C37B] border border-[#C5A059]/40 font-semibold">
-                            DIV 0{i + 1}
-                          </span>
-                          <span className="px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[9px] font-mono text-white/80 border border-white/10">
-                            HS {cat.hsCode}
+                            DIV {String(i + 1).padStart(2, "0")}
                           </span>
                         </div>
                       </div>
@@ -429,7 +430,7 @@ export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
                   <span className="rounded bg-white/10 px-2 py-0.5 text-white/90">CFR</span>
                   <span className="rounded bg-white/10 px-2 py-0.5 text-white/90">DAP</span>
                   <span className="rounded bg-[#C5A059]/20 px-2 py-0.5 text-[#E2C37B] border border-[#C5A059]/30">
-                    SGS Inspected
+                    Test &amp; Audit
                   </span>
                 </div>
               </div>

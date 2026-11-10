@@ -35,14 +35,15 @@ export const metadata: Metadata = {
     template: `%s · ${brand.publicName} Global`,
   },
   description:
-    "SRN PRINTOTRADING PRIVATE LIMITED is an Indian merchant export house supplying bulk spices, agricultural staples, basmati rice, packaged foods, fine attars, garments, and handicrafts under Incoterms 2020 with SGS/Intertek laboratory verification.",
+    "SRN PRINTOTRADING PRIVATE LIMITED is an Indian merchant export house supplying bulk spices, agricultural staples, organic produce, basmati rice, packaged foods, fine attars, garments, and handicrafts under Incoterms 2020 with laboratory test & audit verification.",
   keywords: [
     "Indian spices exporter",
     "bulk agricultural commodities India",
+    "organic farming export India",
     "1121 basmati rice exporter",
     "APEDA certified merchant exporter",
     "Spices Board of India exporter",
-    "SGS inspected spices India",
+    "laboratory tested spices India",
     "Indian merchant trading company",
     "Kolkata export house",
     "FOB Mundra JNPT Nhava Sheva",

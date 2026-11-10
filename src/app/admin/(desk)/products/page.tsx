@@ -17,7 +17,7 @@ export default async function AdminProductsPage() {
             <div>
               <p className="font-medium">{p.name}</p>
               <p className="font-mono text-xs text-black/45">
-                /products/{p.slug} · HS {p.hsCode}
+                /products/{p.slug}
               </p>
             </div>
             <PublishToggle id={p.id} slug={p.slug} published={Boolean(p.isPublished)} />
