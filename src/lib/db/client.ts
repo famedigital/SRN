@@ -24,14 +24,30 @@ async function createPgliteDb(): Promise<Db> {
   return drizzlePglite({ client, schema });
 }
 
+/** Rewrite Supabase direct db host (IPv6-only) to the IPv4 pooler Vercel can reach. */
+function normalizeDatabaseUrl(raw: string): string {
+  const direct = raw.match(
+    /^postgres(?:ql)?:\/\/([^:@/]+):([^@]+)@db\.([a-z0-9]+)\.supabase\.co:5432\/([^?]*)(\?.*)?$/i,
+  );
+  if (!direct) return raw;
+  const [, user, pass, ref, db, query = ""] = direct;
+  const poolUser = user.includes(".") ? user : `postgres.${ref}`;
+  // Project region verified: ap-northeast-1
+  const region = process.env.SUPABASE_POOLER_REGION ?? "ap-northeast-1";
+  const params = new URLSearchParams(query.replace(/^\?/, ""));
+  if (!params.has("pgbouncer")) params.set("pgbouncer", "true");
+  return `postgresql://${poolUser}:${pass}@aws-0-${region}.pooler.supabase.com:6543/${db}?${params.toString()}`;
+}
+
 async function createPostgresDb(): Promise<Db> {
   const { default: pg } = await import("pg");
-  const connectionString = process.env.DATABASE_URL;
-  if (!connectionString) {
+  const rawUrl = process.env.DATABASE_URL;
+  if (!rawUrl) {
     throw new Error("DATABASE_URL is required when DATABASE_MODE=postgres");
   }
+  const connectionString = normalizeDatabaseUrl(rawUrl);
   const needsSsl =
-    /supabase\.co|sslmode=require/i.test(connectionString) ||
+    /supabase\.co|sslmode=require|pooler\.supabase/i.test(connectionString) ||
     process.env.DATABASE_SSL === "true";
   // Prefer IPv4 — Vercel often cannot reach Supabase direct AAAA (ENETUNREACH)
   try {
