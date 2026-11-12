@@ -5,12 +5,14 @@ const marks = [
   {
     src: "/brand/msme.png",
     alt: "MSME — Micro, Small & Medium Enterprises",
+    href: "https://msme.gov.in/",
     width: 160,
     height: 72,
   },
   {
     src: "/brand/iso-9001-2015.png",
     alt: "ISO 9001:2015 Certified Company",
+    href: "https://www.iso.org/standard/62085.html",
     width: 72,
     height: 72,
   },
@@ -27,19 +29,17 @@ export function CertificationMarks({
   className,
   size = "md",
 }: CertificationMarksProps) {
-  const plate =
-    tone === "dark"
-      ? "bg-white/95 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.55)]"
-      : "bg-white border border-[var(--srn-rule)] shadow-sm";
-
   return (
-    <div className={cn("flex flex-wrap items-center gap-3", className)}>
+    <div className={cn("flex flex-wrap items-center gap-4", className)}>
       {marks.map((mark) => (
-        <div
+        <a
           key={mark.src}
+          href={mark.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={mark.alt}
           className={cn(
-            "inline-flex items-center justify-center rounded-md px-2.5 py-2",
-            plate,
+            "inline-flex items-center justify-center transition opacity-95 hover:opacity-100",
             size === "sm" ? "h-12" : "h-14 md:h-16",
           )}
         >
@@ -50,10 +50,11 @@ export function CertificationMarks({
             height={mark.height}
             className={cn(
               "w-auto object-contain",
-              size === "sm" ? "h-8" : "h-9 md:h-11",
+              size === "sm" ? "h-9" : "h-11 md:h-12",
+              tone === "dark" && "drop-shadow-[0_4px_12px_rgba(0,0,0,0.35)]",
             )}
           />
-        </div>
+        </a>
       ))}
     </div>
   );

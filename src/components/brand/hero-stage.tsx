@@ -36,7 +36,7 @@ export function HeroStage({
     <section
       ref={ref}
       className={cn(
-        "hero-stage noise-film relative -mt-24 min-h-[min(94svh,56rem)] overflow-hidden pt-24 md:-mt-32 md:pt-32",
+        "hero-stage noise-film relative -mt-20 min-h-[min(94svh,56rem)] overflow-hidden pt-20 md:-mt-28 md:pt-28",
         className,
       )}
     >

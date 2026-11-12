@@ -34,7 +34,7 @@ export function SiteHeader() {
     <>
       <motion.header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 text-white transition-[background,border,box-shadow] duration-300",
+          "fixed inset-x-0 top-0 z-50 overflow-visible text-white transition-[background,border,box-shadow] duration-300",
           scrolled
             ? "border-b border-white/10 bg-[#0B1220]/95 shadow-[0_12px_40px_-20px_rgba(0,0,0,0.55)] backdrop-blur-xl"
             : "border-b border-white/8 bg-[#0B1220]/72 backdrop-blur-lg",
@@ -52,9 +52,23 @@ export function SiteHeader() {
               <span className="text-white/20">·</span>
               <span>Spices Board</span>
               <span className="text-white/20">·</span>
-              <span>MSME</span>
+              <a
+                href="https://msme.gov.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-white"
+              >
+                MSME
+              </a>
               <span className="text-white/20">·</span>
-              <span>ISO 9001:2015</span>
+              <a
+                href="https://www.iso.org/standard/62085.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-white"
+              >
+                ISO 9001:2015
+              </a>
               <span className="text-white/20">·</span>
               <span className="text-white/70">Incoterms® 2020</span>
             </div>
@@ -67,14 +81,21 @@ export function SiteHeader() {
           </div>
         </div>
 
-        <div className="mx-auto flex h-[5.75rem] max-w-7xl items-center justify-between gap-4 px-5 md:h-[6.75rem] md:px-8">
-          <Link href="/" className="flex min-w-0 items-center gap-3.5 md:gap-4" aria-label={`${brand.publicName} home`}>
-            <AnimatedLogo size="nav" priority label={`${brand.publicName} emblem`} />
+        <div className="relative z-10 mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 overflow-visible px-5 md:h-20 md:px-8">
+          <Link
+            href="/"
+            className="relative z-20 flex min-w-0 items-center gap-3 md:gap-3.5"
+            aria-label={`${brand.publicName} home`}
+          >
+            {/* Large emblem hangs below the slim bar so motto ring stays readable */}
+            <span className="relative top-5 shrink-0 md:top-6">
+              <AnimatedLogo size="nav" priority label={`${brand.publicName} emblem`} />
+            </span>
             <span className="min-w-0">
-              <span className="font-display block text-xl font-semibold tracking-tight text-white md:text-2xl">
+              <span className="font-display block text-lg font-semibold tracking-tight text-white md:text-xl">
                 {brand.publicName}
               </span>
-              <span className="mt-0.5 block text-[11px] font-medium tracking-[0.12em] text-[#E2C37B] sm:text-xs md:tracking-[0.14em]">
+              <span className="mt-0.5 block text-[10px] font-medium tracking-[0.12em] text-[#E2C37B] sm:text-[11px] md:tracking-[0.14em]">
                 {brand.motto}
               </span>
             </span>

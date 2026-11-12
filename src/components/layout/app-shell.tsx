@@ -19,7 +19,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <RfqProvider>
       <SiteHeader />
-      <main id="main" className="pt-28 md:pt-40">
+      <main id="main" className="pt-24 md:pt-32">
         {children}
       </main>
       <SiteFooter />
