@@ -8,6 +8,7 @@ import {
   productCategories,
 } from "../../../content/copy";
 import { AnimatedLogo } from "@/components/brand/animated-logo";
+import { CertificationMarks } from "@/components/brand/certification-marks";
 import { Container } from "@/components/ui/section";
 
 export function SiteFooter() {
@@ -21,10 +22,11 @@ export function SiteFooter() {
       <Container className="relative grid gap-10 py-16 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-5">
           <div className="flex items-center gap-4">
-            <AnimatedLogo size="md" animated={true} label="SRN" />
+            <AnimatedLogo size="nav" animated={true} label="SRN" />
             <div>
-              <p className="font-display text-2xl tracking-tight text-white">{brand.publicName}</p>
-              <p className="text-sm text-[#E2C37B]/70">{brand.tagline}</p>
+              <p className="font-display text-2xl tracking-tight text-white md:text-3xl">{brand.publicName}</p>
+              <p className="mt-1 text-sm font-medium tracking-[0.08em] text-[#E2C37B]">{brand.motto}</p>
+              <p className="mt-1 text-xs text-white/45">{brand.tagline}</p>
             </div>
           </div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/55">
@@ -37,6 +39,14 @@ export function SiteFooter() {
             <p className="mt-2 text-sm text-white/80">
               {presence.join(" · ")}
             </p>
+          </div>
+          <div className="mt-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E2C37B]">
+              Certifications
+            </p>
+            <div className="mt-3">
+              <CertificationMarks tone="dark" />
+            </div>
           </div>
         </div>
         <div className="md:col-span-2">

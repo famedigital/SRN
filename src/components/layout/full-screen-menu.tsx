@@ -161,18 +161,18 @@ export function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps) {
               onClick={onClose}
               className="group flex items-center gap-3.5 transition-opacity hover:opacity-95"
             >
-              <AnimatedLogo size="md" priority label="SRN Emblem" />
+              <AnimatedLogo size="nav" priority label="SRN Emblem" />
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-display block text-xl font-bold tracking-wider text-white">
+                  <span className="font-display block text-xl font-bold tracking-wider text-white md:text-2xl">
                     {brand.publicName}
                   </span>
                   <span className="rounded-full border border-[#C5A059]/40 bg-[#C5A059]/15 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[#E2C37B]">
                     Merchant House
                   </span>
                 </div>
-                <span className="block text-[10px] uppercase tracking-[0.2em] text-[#C5A059] font-medium">
-                  {brand.tagline}
+                <span className="mt-0.5 block text-xs font-medium tracking-[0.12em] text-[#E2C37B]">
+                  {brand.motto}
                 </span>
               </div>
             </Link>

@@ -41,6 +41,8 @@ export function CorporationJsonLd() {
       "Agro Commodities and Basmati Rice Trading",
       "Organic Farming and Certified Produce Export",
       "APEDA RCMC Sourcing Certification",
+      "MSME Registered Enterprise",
+      "ISO 9001:2015 Certified Company",
       "Spices Board of India Regulatory Compliance",
       "Pre-Shipment Laboratory Test and Audit",
       "Maritime Shipping through JNPT Mumbai, Mundra and Cochin Ports",

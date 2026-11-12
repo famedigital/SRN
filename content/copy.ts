@@ -187,7 +187,7 @@ export const about = {
     ],
   },
   group: {
-    heading: "Part of a diversified Indian group",
+    heading: "Part of a diversified Indian Business group",
     body: "SRN sits inside a broader business group with experience in engineering, consulting, construction, modular furniture, and asset-related services. That background shows up in how we handle contracts, timelines, and counterparties. Hospitality and institutional names below belong to the group’s wider track record.",
     clientsLabel: "Group clients and institutions served include",
     clients: [

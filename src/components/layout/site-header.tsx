@@ -52,6 +52,10 @@ export function SiteHeader() {
               <span className="text-white/20">·</span>
               <span>Spices Board</span>
               <span className="text-white/20">·</span>
+              <span>MSME</span>
+              <span className="text-white/20">·</span>
+              <span>ISO 9001:2015</span>
+              <span className="text-white/20">·</span>
               <span className="text-white/70">Incoterms® 2020</span>
             </div>
             <a
@@ -63,15 +67,15 @@ export function SiteHeader() {
           </div>
         </div>
 
-        <div className="mx-auto flex h-[4.75rem] max-w-7xl items-center justify-between gap-4 px-5 md:h-20 md:px-8">
-          <Link href="/" className="flex items-center gap-3.5" aria-label={`${brand.publicName} home`}>
-            <AnimatedLogo size="md" priority label={`${brand.publicName} emblem`} />
-            <span>
-              <span className="font-display block text-lg font-semibold tracking-tight text-white">
+        <div className="mx-auto flex h-[5.75rem] max-w-7xl items-center justify-between gap-4 px-5 md:h-[6.75rem] md:px-8">
+          <Link href="/" className="flex min-w-0 items-center gap-3.5 md:gap-4" aria-label={`${brand.publicName} home`}>
+            <AnimatedLogo size="nav" priority label={`${brand.publicName} emblem`} />
+            <span className="min-w-0">
+              <span className="font-display block text-xl font-semibold tracking-tight text-white md:text-2xl">
                 {brand.publicName}
               </span>
-              <span className="hidden text-[10px] uppercase tracking-[0.16em] text-white/45 sm:block">
-                {brand.tagline}
+              <span className="mt-0.5 block text-[11px] font-medium tracking-[0.12em] text-[#E2C37B] sm:text-xs md:tracking-[0.14em]">
+                {brand.motto}
               </span>
             </span>
           </Link>

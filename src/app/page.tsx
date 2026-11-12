@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { about, brand, home, productCategories } from "../../content/copy";
 import { AnimatedLogo } from "@/components/brand/animated-logo";
+import { CertificationMarks } from "@/components/brand/certification-marks";
 import { HeroStage } from "@/components/brand/hero-stage";
 import { AddToRfqButton } from "@/components/rfq/rfq-dock";
 import { ButtonLink } from "@/components/ui/buttons";
@@ -136,7 +137,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-baseline justify-between border-b border-white/5 pb-2">
                   <span className="font-mono text-white/50 uppercase">Export Accreditations</span>
-                  <span className="font-medium text-[#E2C37B]">IEC · APEDA · Spices Board · FSSAI</span>
+                  <span className="font-medium text-[#E2C37B]">IEC · APEDA · Spices Board · FSSAI · MSME · ISO 9001:2015</span>
                 </div>
                 <div className="flex items-baseline justify-between border-b border-white/5 pb-2">
                   <span className="font-mono text-white/50 uppercase">Trading Terms</span>
@@ -150,6 +151,13 @@ export default function HomePage() {
                   <span className="font-mono text-white/50 uppercase">Pre-Shipment Audits</span>
                   <span className="font-medium text-white">Laboratory test &amp; audit</span>
                 </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/10">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#E2C37B] block mb-2 font-semibold">
+                  Quality &amp; Enterprise Marks
+                </span>
+                <CertificationMarks tone="dark" size="sm" />
               </div>
 
               {/* Verified Group Client Track Record */}
@@ -174,7 +182,7 @@ export default function HomePage() {
                 {about.group.clientsLabel}
               </p>
               <span className="text-[10px] font-mono text-white/40 uppercase hidden sm:inline">
-                Diversified Indian Industrial Group · Institutional Reliability
+                Diversified Indian Business Group · Institutional Reliability
               </span>
             </div>
             <Marquee items={about.group.clients} />
@@ -758,7 +766,7 @@ export default function HomePage() {
             </h2>
             <GoldRule className="mt-6" />
             <p className="mt-6 text-lg text-[var(--srn-ink-muted)] leading-relaxed">
-              SRN PRINTOTRADING PRIVATE LIMITED operates within a multi-sector Indian industrial group active across engineering consulting, civil construction, modular manufacturing, and institutional asset leasing.
+              SRN PRINTOTRADING PRIVATE LIMITED operates within a multi-sector Indian Business group active across engineering consulting, civil construction, modular furniture manufacturing, and institutional asset leasing.
             </p>
             <p className="mt-4 text-sm text-[var(--srn-ink-muted)] leading-relaxed">
               This institutional heritage provides SRN with balance-sheet solvency, audited financial transparency, and contractual integrity that distinguishes our export desk from unregulated trading middlemen.
@@ -780,7 +788,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#E2C37B]">Institutional Scale</span>
-                <p className="text-sm font-semibold mt-0.5">Engineering, Project Consulting, Construction & Modular Manufacturing</p>
+                <p className="text-sm font-semibold mt-0.5">Engineering, Project Consulting, Construction & Modular Furniture Manufacturing</p>
               </div>
             </div>
           </Reveal>

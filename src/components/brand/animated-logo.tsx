@@ -7,11 +7,12 @@ import { cn } from "@/lib/utils";
 
 const LOGO_SRC = "/brand/srn-logo-transparent.png";
 
-type Size = "sm" | "md" | "lg" | "hero";
+type Size = "sm" | "md" | "nav" | "lg" | "hero";
 
 const sizes: Record<Size, { box: string; px: number }> = {
   sm: { box: "h-12 w-12", px: 48 },
   md: { box: "h-16 w-16 md:h-[4.5rem] md:w-[4.5rem]", px: 72 },
+  nav: { box: "h-[5.25rem] w-[5.25rem] md:h-[6.5rem] md:w-[6.5rem]", px: 104 },
   lg: { box: "h-36 w-36 md:h-44 md:w-44", px: 176 },
   hero: { box: "h-52 w-52 sm:h-60 sm:w-60 md:h-72 md:w-72", px: 288 },
 };
@@ -37,6 +38,7 @@ export function AnimatedLogo({
   const dim = sizes[size];
   const live = animated && !reduce;
   const isLarge = size === "lg" || size === "hero";
+  const isNav = size === "nav";
 
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -96,7 +98,14 @@ export function AnimatedLogo({
         className
       )}
     >
-      <div className={cn("relative flex items-center justify-center", dim.box)}>
+      <div
+        className={cn(
+          "relative flex items-center justify-center",
+          dim.box,
+          isNav &&
+            "rounded-full bg-[radial-gradient(circle,rgba(255,248,230,0.18)_0%,rgba(255,248,230,0.05)_55%,transparent_72%)] p-1",
+        )}
+      >
         
         {/* Subtle, soft ambient gold glow */}
         {live && (
@@ -104,8 +113,8 @@ export function AnimatedLogo({
             aria-hidden
             className={cn(
               "absolute rounded-full pointer-events-none mix-blend-screen",
-              isLarge
-                ? "inset-[-15%] bg-[radial-gradient(circle,rgba(197,160,89,0.22)_0%,rgba(197,160,89,0.08)_50%,transparent_75%)] blur-xl"
+              isLarge || isNav
+                ? "inset-[-15%] bg-[radial-gradient(circle,rgba(197,160,89,0.28)_0%,rgba(197,160,89,0.1)_50%,transparent_75%)] blur-xl"
                 : "inset-[-10%] bg-[radial-gradient(circle,rgba(197,160,89,0.25)_0%,transparent_70%)]"
             )}
           />
@@ -143,9 +152,11 @@ export function AnimatedLogo({
               priority={priority}
               className={cn(
                 "h-full w-full object-contain select-none pointer-events-none",
-                isLarge
-                  ? "filter drop-shadow-[0_12px_28px_rgba(0,0,0,0.5)]"
-                  : "filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]"
+                isNav
+                  ? "filter drop-shadow-[0_6px_18px_rgba(0,0,0,0.55)] brightness-110 contrast-110"
+                  : isLarge
+                    ? "filter drop-shadow-[0_12px_28px_rgba(0,0,0,0.5)]"
+                    : "filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]"
               )}
             />
 
